@@ -118,7 +118,7 @@ const menuData = {
       description: {
         en: "Hot tea or chamomile infusion",
         it: "Tè caldo o infuso di camomilla",
-        nl: "Heet thee of kamille-infusie",
+        nl: "Hete thee of kamille-infusie",
         de: "Heißer Tee oder Kamillentee",
         fr: "Thé chaud ou infusion de camomille",
       },
