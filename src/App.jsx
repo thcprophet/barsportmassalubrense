@@ -35,13 +35,11 @@ export default function BarSportMenu() {
     { code: "pl", label: "Polski" },
   ];
 
-  // Helper function to load JSON from public folder
   const loadJson = async (fileName) => {
     const response = await fetch(`/locales/${fileName}`);
     if (!response.ok) throw new Error(`Failed to load ${fileName}`);
     return response.json();
   };
-
 
   useEffect(() => {
     const userLang = navigator.language.slice(0, 2);
@@ -49,11 +47,9 @@ export default function BarSportMenu() {
     const selectedLang = supportedLangs.includes(userLang) ? userLang : "en";
     setLanguage(selectedLang);
 
-
     loadJson(`${selectedLang}.json`).then(setMenuData);
     loadJson(`prices.json`).then(setPrices);
   }, []);
-
 
   const handleLanguageChange = async (e) => {
     const newLang = e.target.value;
@@ -61,7 +57,6 @@ export default function BarSportMenu() {
     const data = await loadJson(`${newLang}.json`);
     setMenuData(data);
   };
-
 
   const renderItem = (item) => (
     <div key={item.id} className="border rounded-2xl shadow-md p-4 w-full">
@@ -73,30 +68,20 @@ export default function BarSportMenu() {
     </div>
   );
 
-
   if (!menuData || !prices) return <div>Loading menu...</div>;
 
-
-  const categories = Object.keys(menuData);
-
+  const categories = ["All", ...Object.keys(menuData)];
 
   return (
     <div className="min-h-screen bg-[#f9f9f7] text-black p-4 flex flex-col items-center">
       <header className="flex flex-col items-center py-6 w-full max-w-4xl">
         <h1 className="text-4xl font-bold drop-shadow-lg mb-4 text-center">Bar Sport</h1>
         <div className="w-32">
-          <select
-            className="w-full border rounded-lg p-2 bg-white text-black"
-            value={language}
-            onChange={handleLanguageChange}
-          >
-            {languages.map(lang => (
-              <option key={lang.code} value={lang.code}>{lang.label}</option>
-            ))}
+          <select className="w-full border rounded-lg p-2 bg-white text-black" value={language} onChange={handleLanguageChange}>
+            {languages.map(lang => <option key={lang.code} value={lang.code}>{lang.label}</option>)}
           </select>
         </div>
       </header>
-
 
       <nav className="flex flex-wrap justify-center gap-2 mb-6 w-full max-w-4xl">
         {categories.map(category => (
@@ -105,11 +90,10 @@ export default function BarSportMenu() {
             onClick={() => setActiveCategory(category)}
             className={`rounded-2xl px-4 py-2 text-lg ${activeCategory === category ? 'bg-black text-white' : 'border text-black'}`}
           >
-            {categoryTranslations[category]?.[language] || category}
+            {category === "All" ? staticTranslations.all[language] : categoryTranslations[category]?.[language] || category}
           </button>
         ))}
       </nav>
-
 
       <main className="w-full max-w-2xl flex flex-col gap-6">
         {(activeCategory === "All" ? Object.entries(menuData) : [[activeCategory, menuData[activeCategory]]])
@@ -125,7 +109,6 @@ export default function BarSportMenu() {
           ))
         }
       </main>
-
 
       <footer className="text-center mt-10 w-full">
         <p>© 2025 Bar Sport • All Rights Reserved</p>
