@@ -12,7 +12,8 @@ This website showcases the **Bar Sport** menu in a sleek, modern interface with 
   - Dutch (nl)
   - German (de)
   - French (fr)
-  - Spanish (es) **soon**
+  - Spanish (es)
+  - Polish (pl)
 - Automatically **detects the user's device language**.
 - Falls back to English if the detected language is not supported.
 
