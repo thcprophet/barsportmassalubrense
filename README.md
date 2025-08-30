@@ -1,12 +1,36 @@
-# React + Vite
+# Bar Sport Menu Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This website showcases the **Bar Sport** menu in a sleek, modern interface with full **multilingual support**. It is designed to provide an intuitive and visually appealing experience for visitors, whether they are browsing on desktop or mobile.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Multilingual Menu
+- Supports the following languages:
+  - English (en)
+  - Italian (it)
+  - Dutch (nl)
+  - German (de)
+  - French (fr)
+  - Spanish (es) **soon**
+- Automatically **detects the user's device language**.
+- Falls back to English if the detected language is not supported.
 
-## Expanding the ESLint configuration
+### Multiple Pricing
+- Displays prices **for all the avilable brand variants**.
+- Elegant presentation ensures users can easily see price variations.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### User-Friendly Design
+- Responsive layout for both mobile and desktop.
+- Smooth navigation between categories and items.
+
+### Categories
+- Organizes menu items into intuitive sections for quick browsing.
+- Can easily add, remove, or update categories as the menu evolves.
+
+## Future Enhancements
+- Integration with an admin panel for easy menu management.
+
+---
+
+This project is ideal for bars, cafes, and restaurants looking to **present their menu elegantly** while accommodating an international audience.
