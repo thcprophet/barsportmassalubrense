@@ -61,12 +61,11 @@ export default function BarSportMenu() {
   const renderItem = (item) => {
     const priceValue = prices[item.id];
 
-
-    // Check if this item has variants
     if (priceValue && priceValue.toLowerCase().includes("variant") && variants && variants[item.id]) {
       return (
         <div key={item.id} className="border rounded-2xl shadow-md p-4 w-full">
           <div className="text-xl font-medium mb-2">{item.name}</div>
+          <p className="text-sm text-gray-600 desc-spacing">{item.description}</p>
           <ul className="list-disc pl-5">
             {variants[item.id].map((v, idx) => (
               <li key={idx} className="flex justify-between">
@@ -75,11 +74,9 @@ export default function BarSportMenu() {
               </li>
             ))}
           </ul>
-          <p className="text-sm text-gray-600 mt-2">{item.description}</p>
         </div>
       );
     }
-
 
     return (
       <div key={item.id} className="border rounded-2xl shadow-md p-4 w-full">
