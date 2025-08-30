@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.css';
 
 const menuData = {
@@ -59,13 +59,13 @@ const menuData = {
       price: "€1,70",
     },
     {
-      name: { en: "Ginseng Coffee", it: "Caffè al ginseng", nl: "Ginsengkoffie", de: "Ginsengkaffee", fr: "Café au ginseng" },
+      name: { en: "Ginseng", it: "Ginseng", nl: "Ginseng", de: "Ginseng", fr: "Ginseng" },
       description: {
-        en: "Espresso blended with ginseng extract",
-        it: "Caffè espresso miscelato con estratto di ginseng",
-        nl: "Espresso gemengd met ginsengextract",
-        de: "Espresso gemischt mit Ginseng-Extrakt",
-        fr: "Expresso mélangé avec extrait de ginseng",
+        en: "Pure ginseng, naturally sweetened.",
+        it: "Ginseng puro, già dolce.",
+        nl: "Pure ginseng, van nature zoet.",
+        de: "Reiner Ginseng, bereits süß.",
+        fr: "Ginseng pur, naturellement sucré.",
       },
       price: "€1,70",
     },
@@ -155,7 +155,7 @@ const menuData = {
         de: "Weiches, süßes Gebäck, oft zum Frühstück serviert",
         fr: "Pâtisserie douce et moelleuse, souvent servie au petit-déjeuner",
       },
-      price: "Placeholder",
+      price: "€1,50",
     },
 
   ],
@@ -437,7 +437,7 @@ const menuData = {
       },
       price: "€3,50",
     },
-    {
+    /*{
       name: { en: "Bud 33 cl", it: "Bud 33 cl", nl: "Bud 33 cl", de: "Bud 33 cl", fr: "Bud 33 cl" },
       description: {
         en: "American pale lager beer, 33 cl bottle",
@@ -447,7 +447,7 @@ const menuData = {
         fr: "Bière lager pâle américaine, bouteille de 33 cl",
       },
       price: "€3,50",
-    },
+    },*/
     {
       name: { en: "Non-Alcoholic Beer 33 cl", it: "Birra analcolica 33 cl", nl: "Alcoholvrij Bier 33 cl", de: "Alkoholfreies Bier 33 cl", fr: "Bière sans alcool 33 cl" },
       description: {
@@ -525,7 +525,7 @@ const menuData = {
       },
       price: "€4,00",
     },
-    {
+    /*{
       name: { en: "Moretti Baffo d'Oro 33 cl", it: "Moretti Baffo d'Oro 33 cl", nl: "Moretti Baffo d'Oro 33 cl", de: "Moretti Baffo d'Oro 33 cl", fr: "Moretti Baffo d'Oro 33 cl" },
       description: {
         en: "Italian premium lager beer, 33 cl bottle",
@@ -557,6 +557,50 @@ const menuData = {
         fr: "Bière India Pale Ale italienne, bouteille de 33 cl",
       },
       price: "€4,00",
+    },*/
+    {
+      name: { en: "Kbirr Afammokk", it: "Kbirr Afammokk", nl: "Kbirr Afammokk", de: "Kbirr Afammokk", fr: "Kbirr Afammokk" },
+      description: {
+        en: "Neapolitan craft IPA with intense hops and citrus notes.",
+        it: "Birra artigianale napoletana IPA con luppolatura intensa e note agrumate.",
+        nl: "Napolitaans ambachtelijk IPA-bier met intense hop en citrusaccenten.",
+        de: "Neapolitanisches Craft-IPA mit intensiver Hopfung und Zitrusnoten.",
+        fr: "Bière artisanale napolitaine IPA aux houblons intenses et notes d’agrumes.",
+      },
+      price: "€5,00",
+    },
+    {
+      name: { en: "Kbirr Cap 'e fierro", it: "Kbirr Cap 'e fierro", nl: "Kbirr Cap 'e fierro", de: "Kbirr Cap 'e fierro", fr: "Kbirr Cap 'e fierro" },
+      description: {
+        en: "Craft Neapolitan red beer with a bold and full-bodied taste.",
+        it: "Birra rossa artigianale napoletana dal gusto deciso e corposo.",
+        nl: "Ambachtelijk Napolitaans rood bier met een krachtige, volle smaak.",
+        de: "Neapolitanisches rotes Craft-Bier mit kräftigem, vollmundigem Geschmack.",
+        fr: "Bière rouge artisanale napolitaine au goût audacieux et corsé.",
+      },
+      price: "€5,00",
+    },
+    {
+      name: { en: "Carlsberg", it: "Carlsberg", nl: "Carlsberg", de: "Carlsberg", fr: "Carlsberg" },
+      description: {
+        en: "Classic Danish lager with a smooth, balanced taste and light body.",
+        it: "Classica lager danese dal gusto equilibrato e corpo leggero.",
+        nl: "Klassieke Deense lager met een zachte, evenwichtige smaak en lichte body.",
+        de: "Klassisches dänisches Lager mit ausgewogenem Geschmack und leichtem Körper.",
+        fr: "Lager danoise classique au goût équilibré et corps léger.",
+      },
+      price: "€3,50",
+    },
+    {
+      name: { en: "Peroni Gluten Free", it: "Peroni Senza Glutine", nl: "Peroni Glutenvrij", de: "Peroni Glutenfrei", fr: "Peroni Sans Gluten" },
+      description: {
+        en: "Italian lager with the same crisp taste as Peroni, crafted gluten free.",
+        it: "Lager italiana con lo stesso gusto fresco della Peroni, prodotta senza glutine.",
+        nl: "Italiaanse lager met dezelfde frisse smaak als Peroni, glutenvrij gebrouwen.",
+        de: "Italienisches Lager mit dem gleichen frischen Geschmack wie Peroni, glutenfrei gebraut.",
+        fr: "Bière blonde italienne avec le même goût frais que la Peroni, brassée sans gluten.",
+      },
+      price: "€4,50",
     },
     {
       name: { en: "Franziskaner Weissbier 50 cl", it: "Franziskaner Weissbier 50 cl", nl: "Franziskaner Weissbier 50 cl", de: "Franziskaner Weissbier 50 cl", fr: "Franziskaner Weissbier 50 cl" },
@@ -760,6 +804,39 @@ const menuData = {
       price: "€8,00",
     },
     {
+      name: { en: "Hugo Spritz St-Germain", it: "Hugo Spritz St-Germain", nl: "Hugo Spritz St-Germain", de: "Hugo Spritz St-Germain", fr: "Hugo Spritz St-Germain" },
+      description: {
+        en: "A delicate spritz made with St-Germain elderflower liqueur, prosecco, soda, and mint.",
+        it: "Un delicato spritz a base di liquore ai fiori di sambuco St-Germain, prosecco, soda e menta.",
+        nl: "Een verfijnde spritz met St-Germain vlierbloesemlikeur, prosecco, bruiswater en munt.",
+        de: "Ein zarter Spritz mit St-Germain Holunderblütenlikör, Prosecco, Soda und Minze.",
+        fr: "Un spritz délicat à base de liqueur de fleur de sureau St-Germain, prosecco, soda et menthe.",
+      },
+      price: "€10,00",
+    },
+    {
+      name: { en: "Venturo Spritz", it: "Venturo Spritz", nl: "Venturo Spritz", de: "Venturo Spritz", fr: "Venturo Spritz" },
+      description: {
+        en: "A refreshing Italian cocktail made with Venturo bitter, prosecco, and soda water.",
+        it: "Un rinfrescante cocktail italiano a base di bitter Venturo, prosecco e acqua frizzante.",
+        nl: "Een verfrissende Italiaanse cocktail met Venturo bitter, prosecco en bruiswater.",
+        de: "Ein erfrischender italienischer Cocktail mit Venturo Bitter, Prosecco und Sodawasser.",
+        fr: "Un cocktail italien rafraîchissant à base de Venturo amer, prosecco et eau gazeuse.",
+      },
+      price: "€8,00",
+    },
+    {
+      name: { en: "Select Spritz", it: "Select Spritz", nl: "Select Spritz", de: "Select Spritz", fr: "Select Spritz" },
+      description: {
+        en: "Traditional Venetian spritz with Select bitter, prosecco, and soda water.",
+        it: "Spritz veneziano tradizionale con Select bitter, prosecco e acqua frizzante.",
+        nl: "Traditionele Venetiaanse spritz met Select bitter, prosecco en bruiswater.",
+        de: "Traditioneller venezianischer Spritz mit Select Bitter, Prosecco und Sodawasser.",
+        fr: "Spritz vénitien traditionnel à base de Select amer, prosecco et eau gazeuse.",
+      },
+      price: "€7,00",
+    },
+    {
       name: { en: "Babà Spritz", it: "Babà Spritz", nl: "Babà Spritz", de: "Babà Spritz", fr: "Babà Spritz" },
       description: {
         en: "Italian cocktail inspired by the classic Babà dessert, with sparkling wine and citrus notes, served over ice.",
@@ -806,11 +883,11 @@ const menuData = {
     {
       name: { en: "Negroni with old recipe", it: "Negroni con antica formula", nl: "Negroni met oud recept", de: "Negroni nach altem Rezept", fr: "Negroni à l'ancienne recette" },
       description: {
-        en: "Classic Italian cocktail made with gin, Campari, and sweet vermouth according to the original recipe, served over ice with an orange twist.",
-        it: "Classico cocktail italiano preparato con gin, Campari e vermouth rosso secondo la ricetta originale, servito con ghiaccio e scorza d'arancia.",
-        nl: "Klassieke Italiaanse cocktail gemaakt met gin, Campari en zoete vermout volgens het originele recept, geserveerd met ijs en een sinaasappelschil.",
-        de: "Klassischer italienischer Cocktail aus Gin, Campari und süßem Wermut nach dem Originalrezept, auf Eis mit Orangenzeste serviert.",
-        fr: "Cocktail italien classique préparé avec gin, Campari et vermouth doux selon la recette originale, servi sur glace avec un zeste d'orange.",
+        en: "Classic Italian cocktail made with gin, Campari, and sweet vermouth antica formula according to the original recipe, served over ice with an orange twist.",
+        it: "Classico cocktail italiano preparato con gin, Campari e vermouth antica formula secondo la ricetta originale, servito con ghiaccio e scorza d'arancia.",
+        nl: "Klassieke Italiaanse cocktail gemaakt met gin, Campari en zoete vermouth antica formula volgens het originele recept, geserveerd met ijs en een sinaasappelschil.",
+        de: "Klassischer italienischer Cocktail aus Gin, Campari und süßem Wermut antica formula nach dem Originalrezept, auf Eis mit Orangenzeste serviert.",
+        fr: "Cocktail italien classique préparé avec gin, Campari et vermouth antica formula selon la recette originale, servi sur glace avec un zeste d'orange.",
       },
       price: "€10,00",
     },
@@ -1147,6 +1224,17 @@ const menuData = {
         nl: "Mediterraanse gin-cocktail met Gin Mare en tonic, geserveerd met ijs en een vleugje kruiden.",
         de: "Mediterraner Gin-Cocktail mit Gin Mare und Tonic Water, auf Eis serviert mit einem Hauch von Kräutern.",
         fr: "Cocktail méditerranéen avec Gin Mare et eau tonique, servi sur glace avec une touche d'herbes.",
+      },
+      price: "€8,00",
+    },
+    {
+      name: { en: "Malfy Tonic", it: "Malfy Tonic", nl: "Malfy Tonic", de: "Malfy Tonic", fr: "Malfy Tonic" },
+      description: {
+        en: "Refreshing Malfy gin served with tonic water and a slice of citrus.",
+        it: "Rinfrescante gin Malfy servito con acqua tonica e una fetta di agrume.",
+        nl: "Verfrissende Malfy gin geserveerd met tonicwater en een schijfje citrus.",
+        de: "Erfrischender Malfy Gin mit Tonic Water und einer Scheibe Zitrusfrucht.",
+        fr: "Gin Malfy rafraîchissant servi avec de l’eau tonique et une tranche d’agrumes.",
       },
       price: "€8,00",
     },
@@ -2096,6 +2184,17 @@ export default function BarSportMenu() {
     { code: "de", label: "Deutsch" },
     { code: "fr", label: "Français" },
   ];
+
+  // Detect device language on mount
+  useEffect(() => {
+    const userLang = navigator.language.slice(0, 2); // get first 2 letters
+    const supportedLangs = languages.map((l) => l.code);
+    if (supportedLangs.includes(userLang)) {
+      setLanguage(userLang);
+    } else {
+      setLanguage("en"); // fallback
+    }
+  }, []);
 
   const renderItem = (item, index) => (
     <div key={index} className="border rounded-2xl shadow-md p-4 w-full">
