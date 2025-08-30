@@ -15,15 +15,14 @@ const categoryTranslations = {
   Yogurts: { en: "Yogurts", it: "Yogurt", nl: "Yoghurt", de: "Joghurt", fr: "Yaourts", es: "Yogures", pl: "Jogurty" },
   IcedCoffee: { en: "Iced Coffee", it: "Crema Caffè", nl: "Koffie-ijs", de: "Eiskaffee", fr: "Café glacé", es: "Crema de café", pl: "Kawa ze śmietanką" },
 };
-const staticTranslations = {
-  all: { en: "All", it: "Tutto", nl: "Alles", de: "Alle", fr: "Tous", es: "Todo", pl: "Wszystko" },
-};
+const staticTranslations = { all: { en: "All", it: "Tutto", nl: "Alles", de: "Alle", fr: "Tous", es: "Todo", pl: "Wszystko" }, };
 
 export default function BarSportMenu() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [language, setLanguage] = useState("en");
   const [menuData, setMenuData] = useState(null);
   const [prices, setPrices] = useState(null);
+  const [variants, setVariants] = useState(null);
 
   const languages = [
     { code: "en", label: "English" },
@@ -49,6 +48,7 @@ export default function BarSportMenu() {
 
     loadJson(`${selectedLang}.json`).then(setMenuData);
     loadJson(`prices.json`).then(setPrices);
+    loadJson(`variants.json`).then(setVariants);
   }, []);
 
   const handleLanguageChange = async (e) => {
@@ -58,15 +58,39 @@ export default function BarSportMenu() {
     setMenuData(data);
   };
 
-  const renderItem = (item) => (
-    <div key={item.id} className="border rounded-2xl shadow-md p-4 w-full">
-      <div className="flex justify-between items-center">
-        <span className="text-xl font-medium">{item.name}</span>
-        {prices && <span className="text-lg font-semibold">{prices[item.id]}</span>}
+  const renderItem = (item) => {
+    const priceValue = prices[item.id];
+
+
+    // Check if this item has variants
+    if (priceValue && priceValue.toLowerCase().includes("variant") && variants && variants[item.id]) {
+      return (
+        <div key={item.id} className="border rounded-2xl shadow-md p-4 w-full">
+          <div className="text-xl font-medium mb-2">{item.name}</div>
+          <ul className="list-disc pl-5">
+            {variants[item.id].map((v, idx) => (
+              <li key={idx} className="flex justify-between">
+                <span>{v.brand}</span>
+                <span>{v.price}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-gray-600 mt-2">{item.description}</p>
+        </div>
+      );
+    }
+
+
+    return (
+      <div key={item.id} className="border rounded-2xl shadow-md p-4 w-full">
+        <div className="flex justify-between items-center">
+          <span className="text-xl font-medium">{item.name}</span>
+          {prices && <span className="text-lg font-semibold">{priceValue}</span>}
+        </div>
+        <p className="text-sm text-gray-600 mt-2">{item.description}</p>
       </div>
-      <p className="text-sm text-gray-600 mt-2">{item.description}</p>
-    </div>
-  );
+    );
+  };
 
   if (!menuData || !prices) return <div>Loading menu...</div>;
 

@@ -1,0 +1,43 @@
+{
+  "91": [
+        { "brand": "Belvedere", "price": "€8,00" },
+        { "brand": "Grey Goose", "price": "€8,00" },
+        { "brand": "Ketel One", "price": "€7,50" },
+        { "brand": "Stolichnaya", "price": "€7,00" },
+        { "brand": "Absolut", "price": "€7,00" },
+        { "brand": "Smirnoff", "price": "€7,00" }
+      ],
+    "92": [
+        { "brand": "Belvedere", "price": "€8,00" },
+        { "brand": "Grey Goose", "price": "€8,00" },
+        { "brand": "Ketel One", "price": "€7,50" },
+        { "brand": "Stolichnaya", "price": "€7,00" },
+        { "brand": "Absolut", "price": "€7,00" },
+        { "brand": "Smirnoff", "price": "€7,00" }
+  ],
+    "93": [
+        { "brand": "Belvedere", "price": "€8,00" },
+        { "brand": "Grey Goose", "price": "€8,00" },
+        { "brand": "Ketel One", "price": "€7,50" },
+        { "brand": "Stolichnaya", "price": "€7,00" },
+        { "brand": "Absolut", "price": "€7,00" },
+        { "brand": "Smirnoff", "price": "€7,00" }
+  ],
+    "94": [
+        { "brand": "Belvedere", "price": "€8,00" },
+        { "brand": "Grey Goose", "price": "€8,00" },
+        { "brand": "Ketel One", "price": "€7,50" },
+        { "brand": "Stolichnaya", "price": "€7,00" },
+        { "brand": "Absolut", "price": "€7,00" },
+        { "brand": "Smirnoff", "price": "€7,00" }
+  ],
+   "95": [
+        { "brand": "Hendrick's", "price": "€8,00" },
+        { "brand": "Mare", "price": "€8,00" },
+        { "brand": "Bombay", "price": "€7,00" },
+        { "brand": "Tanqueray", "price": "€7,00" },
+        { "brand": "Beefeater", "price": "€7,00" },
+        { "brand": "Tanqueray 0.0", "price": "€6,50" },
+        { "brand": "Gordon's", "price": "€6,00" }
+   ]
+}
